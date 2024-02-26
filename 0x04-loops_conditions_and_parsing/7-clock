@@ -2,7 +2,7 @@
 # This script is displaying "Best School" 10 times
 hour=0
 minute=1
-while [ $hour -lt 13 ]
+while [ $hour -le 12 ]
 do
     echo "Hour :$hour"
 	while [ $minute -lt 60 ]
@@ -10,6 +10,13 @@ do
 		echo "$minute"
 		minute=$((minute + 1))
 	done
+	
 	((hour++))
-	minute=1
+	
+	if [ $hour -eq 12 ]; then
+		break
+	fi
+	
+	((minute = 1))
+
 done
