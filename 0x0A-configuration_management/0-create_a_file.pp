@@ -1,4 +1,5 @@
-""Script to create a file school with content being i love puppet""
+#Script to create a file school with content being i love Puppet
+
 file{'/tmp/school':
   ensure  => present,
   mode    => '0744',
