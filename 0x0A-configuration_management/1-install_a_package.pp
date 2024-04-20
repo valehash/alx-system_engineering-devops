@@ -1,3 +1,4 @@
+"script to install flask using pip3"
 $base_packages = {'python-pip', 'python-devel', 'openssl-devel', 'libffi-devel'}
 
 $package_dependencies = concatenate($base_packages, 'pip3')
