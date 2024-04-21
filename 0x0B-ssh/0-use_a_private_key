@@ -1,0 +1,11 @@
+#!/bin/env bash
+
+# Set variables for server connection
+USERNAME="ubuntu"
+SERVER="52.86.201.221"
+KEYFILE="~/.ssh/school"
+PORT="22"  # Default SSH port is 22, change if necessary
+
+# SSH connection
+ssh -i "$KEYFILE" -p $PORT $USERNAME@$SERVER
+
