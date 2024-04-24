@@ -3,11 +3,11 @@
 start nginx
 sudo ufw allow 'Nginx HTTPS' #allows nginx on the firewall
 #change owner to user with the user group
-sudo chown -R "$USER:USER" /var/www/html
+sudo chown -R "$USER:$USER" /var/www/html
 sudo chmod -R 755 /var/www/
 
 #backup the defualt nginx page
-cp /var/html/index.nginx-debian.html /var/html/index.nginx-debian.bak
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.bak
 
 # Creating new index
 echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
@@ -17,4 +17,3 @@ sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH
 
 # Restarting nginx
 sudo service nginx restart
-
