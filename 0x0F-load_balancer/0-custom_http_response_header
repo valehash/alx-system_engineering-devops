@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Start nginx
+sudo service nginx start
+
+# Allow Nginx through the firewall
+sudo ufw allow 'Nginx HTTPS'
+
+# Change owner to current user
+sudo chown -R "$USER:$USER" /var/www/html
+sudo chmod -R 755 /var/www/
+
+# Backup the default nginx page
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.bak
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+
+#Configure the server to have a custom server on line 40
+echo "$HOSTNAME"
+host_name=$(hostname)
+sudo sed -i "50i\	add_header X-Served-By $host_name;" /etc/nginx/sites-available/default
+
+# Restart nginx to apply changes
+sudo service nginx restart
