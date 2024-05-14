@@ -5,6 +5,9 @@ sudo apt update
 # Install ufw if not already installed
 sudo apt install ufw
 
+#enable firwall 
+sudo ufw enable
+
 # Set default policy to deny incoming traffic
 sudo ufw default deny incoming
 
