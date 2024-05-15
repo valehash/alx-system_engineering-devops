@@ -2,7 +2,8 @@
 # script to create a backup db
 
 password = $1
-sudo mysqldump -u root -p $password --all-databases > backup.sql 
-timestamp=$(date +'%d%m%Y%S')
+sudo mysqldump -u root -p"$password" --all-databases > backup.sql
+timestamp="$(date +'%d%-m%-Y%S')"
 backup_tar = "$timestamp.tar.gz"
-tar -czf "$backup_tar" "backup.sql"
+
+tar -czvf "$backup_tar" mysql.sql
