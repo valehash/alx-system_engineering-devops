@@ -13,6 +13,7 @@ def top_ten(subreddit):
     requested = requests.get(base_url, headers=headers, allow_redirects=False)
 
     if requested.status_code != 200:
+        print("None")
         return 0
 
     r_json = requested.json()
