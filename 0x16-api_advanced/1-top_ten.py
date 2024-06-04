@@ -11,20 +11,25 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'vale/1.0.0'}
 
     requested = requests.get(base_url, headers=headers, allow_redirects=False)
-
-    if requested.status_code != 200:
+    
+        if r.status_code != 200:
         print(None)
-        return 0
+        return None
+
     try:
-        r_json = requested.json()
+        js = r.json()
 
-        data = r_json.get("data")
-
-        children = data.get("children")
-        # print(children)
-        for child in children[:10]:
-            hot = child.get("data")
-            print(hot.get("title"))
     except ValueError:
         print(None)
-        return (None)
+        return None
+
+    try:
+
+        data = js.get("data")
+        children = data.get("children")
+        for child in children[:10]:
+            post = child.get("data")
+            print(post.get("title"))
+
+    except:
+        print(None)
