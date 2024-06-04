@@ -11,13 +11,13 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'vale/1.0.0'}
 
     requested = requests.get(base_url, headers=headers, allow_redirects=False)
-    
-        if r.status_code != 200:
+
+    if requested.status_code != 200:
         print(None)
         return None
 
     try:
-        js = r.json()
+        js = requested.json()
 
     except ValueError:
         print(None)
