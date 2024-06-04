@@ -13,15 +13,18 @@ def top_ten(subreddit):
     requested = requests.get(base_url, headers=headers, allow_redirects=False)
 
     if requested.status_code != 200:
-        print("None")
+        print(None)
         return 0
+    try:
+        r_json = requested.json()
 
-    r_json = requested.json()
+        data = r_json.get("data")
 
-    data = r_json.get("data")
-
-    children = data.get("children")
-    # print(children)
-    for child in children[:10]:
-        hot = child.get("data")
-        print(hot.get("title"))
+        children = data.get("children")
+        # print(children)
+        for child in children[:10]:
+            hot = child.get("data")
+            print(hot.get("title"))
+    except:
+        print(None)
+        return(None)
