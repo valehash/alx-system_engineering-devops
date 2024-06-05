@@ -1,11 +1,12 @@
-# fixing  the phpp in wp-settings
+# fixing php with puppet
 
-file { 'var/www/html/wp-settings.php'
-  ensure  => present
+file { '/var/www/html/wp-settings.php':
+  ensure => present,
 }
 
-file_line {'replace_phpp_with_php':
-  path    => '/var/www/html/wp-settings.php',
-  line    => '.phpp',
-  replace => '.php',
+exec { 'replace_phpp_with_php':
+  command => 'sed -i \'s/\.phpp/\.php/g\' /var/www/html/wp-settings.php',
+  onlyif  => 'grep \.phpp /var/www/html/wp-settings.php',
+  require => File['/var/www/html/wp-settings.php'],
 }
+
