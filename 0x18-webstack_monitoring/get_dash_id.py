@@ -1,8 +1,8 @@
 import requests
 
 # Replace with your Datadog API key and application key
-API_KEY = '624602f8010c4bad80af300f3df81704'
-APP_KEY = '095f7939d1b7dc02654e280a97d86c96f7ae14ec'
+API_KEY = ''
+APP_KEY = ''
 
 headers = {
     'DD-API-KEY': API_KEY,
