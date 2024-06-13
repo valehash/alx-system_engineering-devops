@@ -11,5 +11,5 @@ exec { 'update_connection_limit':
 }
 
 exec { 'reload_nginx':
-   command => '/etc/init.d/nginx restart',
+  command => '/etc/init.d/nginx restart',
 }
