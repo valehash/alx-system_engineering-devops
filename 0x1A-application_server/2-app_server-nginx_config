@@ -1,0 +1,12 @@
+server {
+        listen 80;
+        server_name 54.86.227.214; #replace with domain_name later
+
+        location /airbnb-onepage/ {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/AirBnB_clone_v2/airbnb.sock;
+
+        }
+
+}
+# note you should create a symlink to etc/default/sites-enabled
